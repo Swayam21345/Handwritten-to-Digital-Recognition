@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-space-grey: #1a1c23;
+  --color-space-grey-light: #242731;
+  --color-electric-blue: #3b82f6;
+  --color-electric-blue-glow: rgba(59, 130, 246, 0.5);
+
+  --color-bento-bg: #0b0e14;
+  --color-bento-cyan: #22d3ee;
+  --color-bento-cyan-glow: rgba(34, 211, 238, 0.3);
+  --color-bento-slate-800: #1e293b;
+}
+
+@layer base {
+  body {
+    @apply bg-bento-bg text-slate-200 font-sans antialiased;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .bento-card {
+    @apply bg-slate-900/40 backdrop-blur-lg border border-slate-800 rounded-3xl p-5;
+  }
+
+  .glass {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10;
+  }
+  
+  .neumorphic-inset {
+    background: #0b0e14;
+    box-shadow: inset 5px 5px 10px #06080b,
+                inset -5px -5px 10px #10141d;
+  }
+  
+  .neumorphic-flat {
+    background: #0b0e14;
+    box-shadow: 6px 6px 12px #06080b,
+                -6px -6px 12px #10141d;
+  }
+
+  .cyan-glow {
+    box-shadow: 0 0 20px var(--color-bento-cyan-glow);
+  }
+
+  .recognition-pulse {
+    animation: pulse-glow 2s infinite;
+  }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 5px var(--color-bento-cyan-glow); }
+  50% { box-shadow: 0 0 30px var(--color-bento-cyan-glow); }
+  100% { box-shadow: 0 0 5px var(--color-bento-cyan-glow); }
+}
+
+/* Canvas Grid Pattern */
+.bg-grid {
+  background-image: radial-gradient(var(--color-bento-cyan) 0.5px, transparent 0.5px);
+  background-size: 20px 20px;
+}
+
+
+/* Custom cursor for drawing */
+.canvas-cursor {
+  cursor: crosshair;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-space-grey;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-700 rounded-full hover:bg-electric-blue transition-colors;
+}
+
